@@ -1,0 +1,29 @@
+body {
+    background-image: url(../images/back.jpg);
+    background-size: cover;
+    font-family: 'Fugaz One', cursive;
+}
+
+header {
+    background-image: url(../images/flag.jpg);
+    background-size: cover;
+    background-position: top;
+    font-family: 'Fugaz One', cursive;
+    height: 50px;
+    padding-top: 10px;
+}
+
+footer {
+    background-image: url(../images/flag.jpg);
+    background-size: cover;
+    background-position: bottom;
+    font-family: 'Fugaz One', cursive;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.display {
+    background-color: #c2c2c2;
+}
+
+
