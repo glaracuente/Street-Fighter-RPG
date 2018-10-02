@@ -133,9 +133,10 @@
 
            
             $("#attackButton").on("click", function () {
+               currentEnemy.health = currentEnemy.health - yourChar.attackPower
                yourChar.attack();
-               console.log(yourChar.attackPower)
-               // console.log($("#yourCharacter")[0].firstChild) //NEED A WAY TO TELL WHICH FIGHTER IS MY CHARACTER
+               console.log(currentEnemy.health)
+               ///enemy counter attack
             });
 
 
