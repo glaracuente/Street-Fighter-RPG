@@ -61,7 +61,6 @@
         $(document).ready(function () {
             var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
             var fighterObjects = [];
-            var fighterDisplays = [];
 
             // Next we create a for loop to create crystals for every numberOption.
             for (var i = 0; i < fighterNames.length; i++) {
@@ -107,8 +106,8 @@
                 fighterDisplay.append(fighterName)
                 fighterDisplay.append(fighterImg)
                 fighterDisplay.append(fighterHP)
+                fighterDisplay.data("fighter", fighterObjects[i])
                 $("#pregame").append(fighterDisplay)
-                fighterDisplays.push(fighterDisplay)
             }
 
             $(".fighterBox").on("click", function () {
@@ -129,7 +128,8 @@
             });
 
             $("#attackButton").on("click", function () {
-                fighterObjects[0].attack();
+                console.log($("#yourCharacter")[0].firstChild)
+                console.log( jQuery.data($("#yourCharacter")[0].firstChild, "fighter").name );
                 console.log($("#yourCharacter")[0].firstChild) //NEED A WAY TO TELL WHICH FIGHTER IS MY CHARACTER
             });
 
