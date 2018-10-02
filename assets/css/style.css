@@ -1,29 +1,257 @@
-body {
-    background-image: url(../images/back.jpg);
-    background-size: cover;
-    font-family: 'Fugaz One', cursive;
-}
+/** GENERAL CLASSES **/
+* {
+    box-sizing: border-box;
+  }
+    
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
+  .vl {
+      border: .5px solid #cccccc;
+      height: 20px;
+      float: left;
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+  
+ 
+    
+  /** Core Body, Header, Nav, and Footer Code **/
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    background-color: #ffffff;
+    width: 100%;
+    font-size: 24px;
+  }
+  
+  /* The animation code 
+  @keyframes name-change {
+    from {
+      background-color: #eee;
+      color:#4aaaa5;
+    }
+    to {
+      background-color: #4aaaa5;
+      color:#eee;
+    }
+  }*/
+  
+  h1 {
+    padding: 20px;
+    color:rgb(162, 18, 18);
+    font-family: 'Georgia', Times, 'Times New Roman', serif;
+    font-weight: bold;
+    /*animation-name: name-change;
+    animation-duration: 5s;*/
+    float: right;
+  }
+  
+  nav {
+    float: right;
+    margin-top: 22px;; 
+  }
+  
+  footer {
+    background-color: #666666; 
+    padding: 20px;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    border-top: 4px solid #4aaaa5;
+    margin-top: 40px;
+  }
+  
+  
+  /** LINKS **/
+  
+  a {
+    float: left;
+    color: #a3a3a3;
+    background-color: #fff;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 18px;
+  }
+  
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #4aaaa5;
+  }
+  
+  a:active {
+    font-weight: bold;
+    color: #4aaaa5;
+  }
+  
+  /** CONTENT **/
+  
+  #content {
+    background-color: #ffffff;
+    color: #777777;
+    border: 2px solid #dddddd;
+    clear: both;
+    position: relative;
+    top: 20px;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-family: 'Georgia', Times, 'Times New Roman', serif;
+    font-weight: bold;
+    color: #4aaaa5;
+    font-size: 24px;
+  }
+  
+  hr {
+    border: 1px solid #cccccc;
+    color:  #cccccc;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  
+  /** ABOUT **/
+  
+  #about-pic {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    float: left;
+  }
+  
+  #linkedin {
+    float: right;
+  }
+  
+  img {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  /** CONTACT **/
+  
+  
+  input {
+    color: #777777;
+    width: 100%;
+    font-size: 10px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  }
+  
+  #attackButton {
+    visibility: hidden;
+    background-color: red;
+    border: solid 1px black;
+    color: white;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    font-weight: bold;
+  }
+  
+  
+  /** PORTFOLIO **/
+  
+  .fighterBox {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 0px 20px 20px 0px;
+    border: solid 2px rgb(0, 177, 0);
+    text-align: center;
+  }
 
-header {
-    background-image: url(../images/flag.jpg);
-    background-size: cover;
-    background-position: top;
-    font-family: 'Fugaz One', cursive;
-    height: 50px;
-    padding-top: 10px;
-}
 
-footer {
-    background-image: url(../images/flag.jpg);
-    background-size: cover;
-    background-position: bottom;
-    font-family: 'Fugaz One', cursive;
-    height: 50px;
-    padding-top: 10px;
-}
+  
+  .fighterImg {
+    width: 180px;
+    height: 140px;
+    margin: 10px;
+  }
+  
+ 
+  /* MEDIA QUERIES */
+  
+  /* Width at 980px and below */
+  /*
+  @media screen and (max-width: 980px) {
+    #content {
+      width: 540px;
+      margin-left: 5%;
+    }
+  
+    .p_con{
+      display: inline-block;
+      position: relative;
+      width: 45%;
+      height: 200px;
+      padding: 10px;
+    }
+    
+  }
+  
+  /* Width at 768px and below 
+  @media screen and (max-width: 768px) {
+    #content {
+      width: 96%;
+      margin: 0 auto;
+    }
+  }
+  
+  
+  /* Width at 640px and below 
+  @media screen and (max-width: 640px) {
+    header {
+      position: static;
+      clear: both;
+      width: 100%;
+      text-align: center;
+    }
+  
+    h1 {
+      display: inline-block;
+      width: 100%;
+    }
+  
+    nav {
+      display: inline-block;
+      float: none;
+      margin: 20px;
+    }
+  
+    .p_con {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      height: 300px;
+      padding: 0px;
+    }
 
-.display {
-    background-color: #c2c2c2;
-}
-
-
+*/

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Street Fighter</title>
+</head>
+
+<body>
+    <header>
+        <h1>Street Fighter RPG</h1>
+    </header>
+
+    <div id="pregame">
+    </div>
+
+    <!--div to actually "your characters"-->
+    <h2>Your Character</h2>
+
+    <!--div to actually place chosen character-->
+    <div id="yourCharacter"></div>
+
+    <!--div for "enemies to attack"-->
+    <h2>Enemies Available To Attach</h2>
+
+    <!--div for actually placing 3 enemies to attack-->
+    <div id="enemyRoster"></div>
+
+    <!--div for fight section-->
+    <h2>Fight Section</h2>
+
+    <!--div for attack button-->
+    <div id="attackButton">Attack</div>
+
+    <!--div for "defender"-->
+    <h2>Defender</h2>
+
+    <!--div to actually move chars from available to defender section-->
+    <div id="defender"></div>
+
+    <!--div to display game info -->
+    <div>game info here</div>
+
+    <!--div for restart button-->
+    <div>restart button here</div>
+
+
+    <footer>Ready...Fight!</footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        //NEED TO MOVE THIS INTO JS FILE IN THE END
+
+        $(document).ready(function () {
+            var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
+            var fighterObjects = [];
+            var fighterDisplays = [];
+
+            // Next we create a for loop to create crystals for every numberOption.
+            for (var i = 0; i < fighterNames.length; i++) {
+                var fighter = {
+                    name: "",
+                    pic: "",
+                    health: 100,
+                    baseAttackPower: 5,
+                    attackPower: 5,
+                    counter: 5, //SHOULD REALLY VALUE FROM LIST OF OPTIONS
+                    attack: function () {
+                        this.attackPower = this.attackPower + this.baseAttackPower;
+                    }
+
+                    //function to attack (which will incremenet attack power, decrease hp of enemy)
+                    //  attack(enemy)
+                    //  
+                };
+
+                fighter.name = fighterNames[i];
+                fighter.pic = "assets/images/" + fighterNames[i].toLowerCase() + ".jpg";
+
+                fighterObjects.push(fighter);
+            }
+
+
+            for (var i = 0; i < fighterObjects.length; i++) {
+                // <section class="p_con">
+                //     <div>Ryu</div>
+                //    <img class="p_img" src="assets/images/fighter1.jpg" alt="fighter1">
+                //        <div>120</div>
+                // </section>
+                var fighterDisplay = $("<section>")
+                fighterDisplay.addClass("fighterBox")
+                //NEED BACKGROUND COLOR...THAT CAN CHANGE WHETHER ON DEFENCE OR ATTACK
+                var fighterName = $("<div>")
+                fighterName.text(fighterObjects[i].name)
+                var fighterImg = $("<img>");
+                fighterImg.addClass("fighterImg")
+                fighterImg.attr("src", fighterObjects[i].pic);
+                var fighterHP = $("<div>")
+                fighterHP.text(fighterObjects[i].health)
+                fighterDisplay.append(fighterName)
+                fighterDisplay.append(fighterImg)
+                fighterDisplay.append(fighterHP)
+                $("#pregame").append(fighterDisplay)
+                fighterDisplays.push(fighterDisplay)
+            }
+
+            $(".fighterBox").on("click", function () {
+                //click function for fresh page...will move all fighters to appropriate areas at start of game
+                if ($("#pregame")[0].childElementCount === 4) {
+                    console.log($(this))
+                    $("#yourCharacter").append($(this))
+                    $("#enemyRoster").append($("#pregame").children().detach())
+                }
+                //move enemy to defense area...only if clicking on a fighter in enemy roster, and there is no current defender
+                else if ($("#enemyRoster").has($(this)).length && $("#defender")[0].childElementCount === 0) { //WHY DO I NEED LENGTH FOR THIS TO WORK PROPERLY?
+                    //make attach button appear only when the first defender is chosen
+                    if ($("#enemyRoster")[0].childElementCount === 3) {
+                        $("#attackButton").css('visibility', 'visible');
+                    }
+                    $("#defender").append($(this))
+                }
+            });
+
+            $("#attackButton").on("click", function () {
+                fighterObjects[0].attack();
+                console.log($("#yourCharacter")[0].firstChild) //NEED A WAY TO TELL WHICH FIGHTER IS MY CHARACTER
+            });
+
+
+
+
+
+
+
+
+        });
+
+
+        //function to start the entire game (happens on page refresh)
+
+
+
+
+
+    </script>
+</body>
+
+</html>
