@@ -61,6 +61,8 @@
         $(document).ready(function () {
             var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
             var fighterObjects = [];
+            var yourChar;
+            var currentEnemy;
 
             // Next we create a for loop to create crystals for every numberOption.
             for (var i = 0; i < fighterNames.length; i++) {
@@ -115,6 +117,7 @@
                 if ($("#pregame")[0].childElementCount === 4) {
                     console.log($(this))
                     $("#yourCharacter").append($(this))
+                    yourChar = jQuery.data($("#yourCharacter")[0].firstChild, "fighter")
                     $("#enemyRoster").append($("#pregame").children().detach())
                 }
                 //move enemy to defense area...only if clicking on a fighter in enemy roster, and there is no current defender
@@ -124,13 +127,15 @@
                         $("#attackButton").css('visibility', 'visible');
                     }
                     $("#defender").append($(this))
+                    currentEnemy = jQuery.data($("#defender")[0].firstChild, "fighter")
                 }
             });
 
+           
             $("#attackButton").on("click", function () {
-                console.log($("#yourCharacter")[0].firstChild)
-                console.log( jQuery.data($("#yourCharacter")[0].firstChild, "fighter").name );
-                console.log($("#yourCharacter")[0].firstChild) //NEED A WAY TO TELL WHICH FIGHTER IS MY CHARACTER
+               yourChar.attack();
+               console.log(yourChar.attackPower)
+               // console.log($("#yourCharacter")[0].firstChild) //NEED A WAY TO TELL WHICH FIGHTER IS MY CHARACTER
             });
 
 
