@@ -82,12 +82,6 @@
                     setBaseAttackPower: function() {
                         this.baseAttackPower = this.attackPower;
                     }
-
-
-
-                    //function to attack (which will incremenet attack power, decrease hp of enemy)
-                    //  attack(enemy)
-                    //  
                 };
 
                 fighter.name = fighterNames[i];
@@ -101,14 +95,8 @@
 
 
             for (var i = 0; i < fighterObjects.length; i++) {
-                // <section class="p_con">
-                //     <div>Ryu</div>
-                //    <img class="p_img" src="assets/images/fighter1.jpg" alt="fighter1">
-                //        <div>120</div>
-                // </section>
                 var fighterDisplay = $("<section>")
                 fighterDisplay.addClass("fighterBox")
-                //NEED BACKGROUND COLOR...THAT CAN CHANGE WHETHER ON DEFENCE OR ATTACK
                 var fighterName = $("<div>")
                 fighterName.addClass("fighterName")
                 fighterName.text(fighterObjects[i].name)
@@ -131,6 +119,7 @@
                 if ($("#pregame")[0].childElementCount === 4) {
                     console.log($(this))
                     $("#yourCharacter").append($(this))
+                    $($("#yourCharacter")[0].firstChild).css("background-color", "blue")
                     yourChar = jQuery.data($("#yourCharacter")[0].firstChild, "fighter")
                     $("#enemyRoster").append($("#pregame").children().detach())
                 }
@@ -141,6 +130,8 @@
                         $("#attackButton").css('visibility', 'visible')
                     }
                     $("#defender").append($(this))
+                    $($("#defender")[0].firstChild).css("background-color", "red")
+                    $($("#enemyRoster")[0].children).css({"background-color":"black","color":"white"})
                     currentEnemy = jQuery.data($("#defender")[0].firstChild, "fighter")
                 }
             });
@@ -148,7 +139,7 @@
 
             $("#attackButton").on("click", function () {
                 if ($("#defender")[0].childElementCount === 0) {
-                    return;
+                    return
                 }
 
                 currentEnemy.health = currentEnemy.health - yourChar.attackPower
@@ -179,6 +170,9 @@
         });
 
 
+        //NEED TO MAKE VARIABLE NAMES BETTER
+        //FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
+        //NEED BETTER VISUALS! (background...make them flash when hit....sounds when attacking)
         //function to start the entire game (happens on page refresh)
 
 
