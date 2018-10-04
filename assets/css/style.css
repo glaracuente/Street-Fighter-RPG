@@ -17,9 +17,17 @@
     background-repeat:no-repeat;
     background-size: cover;
     height: 300px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     visibility: hidden;
-}
+  }
+
+  #bottom {
+    height: 300px;
+    margin-bottom: 10px;
+    visibility: hidden;
+  }
+
+
    /** 
   html, body {
     height: 100%;
@@ -97,7 +105,7 @@
     text-align: center;
     background-color: black;
   }
-
+  
   .fighterName {
     background-color: rgb(0, 0, 0);
     color: white;
@@ -133,6 +141,14 @@
   
   #enemiesDiv {
     clear: both;
+  }
+
+  #fightSecDiv {
+    float: right;
+    position: relative;
+    right: 200px;
+    bottom: 120px;
+    max-width: 300px;
   }
 
   .fighterImg {
