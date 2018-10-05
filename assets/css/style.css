@@ -152,8 +152,8 @@
   }
 
   .fighterImg {
-    width: 180px;
-    height: 140px;
+    width: 80%;
+    height: 70%;
     margin: 10px;
   }
   
@@ -187,7 +187,6 @@
   }*/
   
   
-   Width at 640px and below 
   @media screen and (max-width: 640px) {
     .fighterBox {
       display: inline-block;
@@ -199,3 +198,8 @@
       background-color: black;
     }
 
+  
+
+  }
+
+  
