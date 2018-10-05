@@ -184,35 +184,18 @@
       width: 96%;
       margin: 0 auto;
     }
-  }
+  }*/
   
   
-  /* Width at 640px and below 
+   Width at 640px and below 
   @media screen and (max-width: 640px) {
-    header {
-      position: static;
-      clear: both;
-      width: 100%;
+    .fighterBox {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin: 0px 10px 10px 0px;
+      border: solid 2px rgb(0, 177, 0);
       text-align: center;
-    }
-  
-    h1 {
-      display: inline-block;
-      width: 100%;
-    }
-  
-    nav {
-      display: inline-block;
-      float: none;
-      margin: 20px;
-    }
-  
-    .p_con {
-      display: inline-block;
-      position: relative;
-      width: 100%;
-      height: 300px;
-      padding: 0px;
+      background-color: black;
     }
 
-*/
