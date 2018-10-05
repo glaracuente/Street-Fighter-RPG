@@ -154,7 +154,6 @@
   .fighterImg {
     width: 80%;
     height: 70%;
-    margin: 10px;
   }
   
  
@@ -185,9 +184,18 @@
       margin: 0 auto;
     }
   }*/
-  
+
+ #pregame {
+   width: 440px;
+ }
+
+
   
   @media screen and (max-width: 640px) {
+    #pregame {
+      width: 220px;
+    }
+
     .fighterBox {
       display: inline-block;
       width: 100px;
