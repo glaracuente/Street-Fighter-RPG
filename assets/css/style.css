@@ -28,20 +28,11 @@
   }
 
 
-   /** 
-  html, body {
-    height: 100%;
-  }
-  **/
+ 
   body {
-    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'Press Start 2P', cursive;
   }
-  
-  header {
-    background-color: #ffffff;
-    width: 100%;
-    font-size: 24px;
-  }
+
   
   /* The animation code 
   @keyframes name-change {
@@ -192,13 +183,13 @@
   
   @media screen and (max-width: 640px) {
     #pregame {
-      width: 220px;
+      width: 300px;
     }
 
     .fighterBox {
       display: inline-block;
-      width: 100px;
-      height: 100px;
+      width: 140px;
+      height: 140px;
       margin: 10px 10px 10px 0px;
       text-align: center;
       background-color: black;

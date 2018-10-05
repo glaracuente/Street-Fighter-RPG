@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var introSound = new Audio('assets/introSound.mp3');
+    console.log(introSound)
     var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
     var backs = ["back1", "back2", "back1", "back2"];
     var fighterHPs = [300, 350, 275, 325];
@@ -79,6 +81,7 @@ $(document).ready(function () {
     $(".fighterBox").on("click", function () {
         console.log("clicking fighter box") //why doesn't work after reset?????
         if ($("#pregame")[0].childElementCount === 4) {
+            introSound.play();
             $("#yourCharacter").append($(this))
             $($($("#yourCharacter")[0].firstChild).find(".fighterName")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
             $($($("#yourCharacter")[0].firstChild).find(".fighterHP")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
