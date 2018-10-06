@@ -149,9 +149,7 @@ $(document).ready(function () {
 
         //NEED TO MAKE VARIABLE NAMES BETTER
         //FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
-        //NEED BETTER VISUALS! (background...make them flash when hit....sounds when attacking)
         //make mobile responsive
-        //function to start the entire game (happens on page refresh)
 
 
 

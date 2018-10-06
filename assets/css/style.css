@@ -171,20 +171,9 @@
       width: 96%;
       margin: 0 auto;
     }
-  }*/
-
- #pregame {
-   width: 440px;
- }
 
 
-  
-  @media screen and (max-width: 640px) {
-    #pregame {
-      width: 320px;
-    }
-
-    .fighterBox {
+       .fighterBox {
       width: 140px;
       height: 140px;
       margin: 10px 10px 10px 10px;
@@ -192,8 +181,29 @@
       background-color: black;
     }
 
+     #pregame {
+      width: 320px;
+    }
+
+  }*/
+
+ #pregame {
+   width: 440px;
+ }
+
+
+
+  @media screen and (max-width: 450px) {
+    .fighterBox {
+      width: 100px;
+      height: 100px;
+      margin: 10px 10px 10px 10px;
+      text-align: center;
+      background-color: black;
+    }
+
+   }
   
 
-  }
 
   
