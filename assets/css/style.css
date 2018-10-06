@@ -70,7 +70,7 @@
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 12px;
   }
 
   #restartButton {
@@ -82,7 +82,8 @@
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 12px;
+
   }
   
   
@@ -136,11 +137,6 @@
   }
 
   #fightSecDiv {
-    float: right;
-    position: relative;
-    right: 200px;
-    bottom: 120px;
-    max-width: 300px;
   }
 
   .fighterImg {
