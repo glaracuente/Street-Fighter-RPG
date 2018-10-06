@@ -14,8 +14,7 @@
   /** Core Body, Header, Nav, and Footer Code background-image: url(../images/back1.gif);**/
 
   #fightRing {
-    display: inline-block;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: 100% 300px;
     height: 300px;
     width: 100%;

@@ -89,7 +89,6 @@ $(document).ready(function () {
             $("#fightRing").css('visibility', 'visible')
             $("#bottom").css('visibility', 'visible')
             $("#enemyRoster").append($("#pregame").children().detach())
-            $("#pregame").text("")
         }
         //move enemy to defense area...only if clicking on a fighter in enemy roster, and there is no current defender
         else if ($("#enemyRoster").has($(this)).length && $("#defender")[0].childElementCount === 0) { //WHY DO I NEED LENGTH FOR THIS TO WORK PROPERLY?
