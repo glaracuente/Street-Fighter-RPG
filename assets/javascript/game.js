@@ -1,6 +1,18 @@
+var introSound = new Audio('assets/sounds/introSound.mp3');
+var blanka = new Audio('assets/sounds/blanka.mp3');
+var ryu = new Audio('assets/sounds/hadoken.mp3');
+var guile = new Audio('assets/sounds/sonicboom.mp3');
+var dhalsim = new Audio('assets/sounds/yoga_flame.mp3');
+var fight = new Audio('assets/sounds/fight.mp3');
+var perfect = new Audio('assets/sounds/perfect.mp3');
+var youlose = new Audio('assets/sounds/youlose.mp3');
+var youwin = new Audio('assets/sounds/youwin.mp3');
+var select = new Audio('assets/sounds/select.mp3');
+
+
+
+
 $(document).ready(function () {
-    var introSound = new Audio('assets/introSound.mp3');
-    console.log(introSound)
     var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
     var fighterHPs = [300, 350, 275, 325];
     var fighterAttacks = [30, 20, 15, 10];
@@ -80,8 +92,8 @@ $(document).ready(function () {
     $(".fighterBox").on("click", function () {
         console.log("clicking fighter box") //why doesn't work after reset?????
         if ($("#pregame")[0].childElementCount === 4) {
-            introSound.play();
             $("#pregametext").empty();
+            introSound.play()
             $("#yourCharacter").append($(this))
             $($($("#yourCharacter")[0].firstChild).find(".fighterName")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
             $($($("#yourCharacter")[0].firstChild).find(".fighterHP")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
@@ -103,15 +115,19 @@ $(document).ready(function () {
             $($($("#defender")[0].firstChild).find(".fighterImg")).addClass("img-hor")
             $($("#enemyRoster")[0].children).css({ "background-color": "black", "color": "white" })
             currentEnemy = jQuery.data($("#defender")[0].firstChild, "fighter")
+            eval(currentEnemy.name.toLowerCase()).play()
         }
     });
 
 
     $("#attackButton").on("click", function () {
         if ($("#defender")[0].childElementCount === 0) {
+            select.play()
             $("#info").html("<p>No enemy here.</p>")
             return
         }
+
+        fight.play()
 
         $("#info").html("<p>You attacked " + currentEnemy.name + " for " + yourChar.attackPower + " damage.</p><p>" + currentEnemy.name + " attacked you back for " + currentEnemy.counter + " damage.</p>")
         currentEnemy.health = currentEnemy.health - yourChar.attackPower
@@ -120,20 +136,27 @@ $(document).ready(function () {
         $(".fighterHP", $("#yourCharacter")[0].firstChild).text(yourChar.health)
         $(".fighterHP", $("#defender")[0].firstChild).text(currentEnemy.health)
 
+    
         if (currentEnemy.health <= 0) {
             $("#info").html("<p>You have defeated " + currentEnemy.name + ", you can choose to fight another enemy.</p>")
+            youwin.play()
             $("#defender").empty()
-        }
-
-        if (yourChar.health <= 0) {
-            $("#info").html("<p>You have been defeated...GAME OVER!!!</p>")
-            $("#restartButton").css('visibility', 'visible')
         }
 
         if ($("#enemyRoster")[0].childElementCount === 0 && $("#defender")[0].childElementCount === 0) {
             $("#info").html("<p>You won!!!! GAME OVER!!!</p>")
             $("#restartButton").css('visibility', 'visible')
+            $("#attackButton").css('visibility', 'hidden')
+            return;
         }
+
+        if (yourChar.health <= 0) {
+            youlose.play()
+            $("#info").html("<p>You have been defeated...GAME OVER!!!</p>")
+            $("#restartButton").css('visibility', 'visible')
+        }
+
+       
 
     });
 
