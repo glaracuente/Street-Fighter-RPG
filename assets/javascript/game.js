@@ -81,6 +81,7 @@ $(document).ready(function () {
         console.log("clicking fighter box") //why doesn't work after reset?????
         if ($("#pregame")[0].childElementCount === 4) {
             introSound.play();
+            $("#pregametext").empty();
             $("#yourCharacter").append($(this))
             $($($("#yourCharacter")[0].firstChild).find(".fighterName")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
             $($($("#yourCharacter")[0].firstChild).find(".fighterHP")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
