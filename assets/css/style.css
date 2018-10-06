@@ -181,11 +181,10 @@
   
   @media screen and (max-width: 640px) {
     #pregame {
-      width: 300px;
+      width: 320px;
     }
 
     .fighterBox {
-      display: inline-block;
       width: 140px;
       height: 140px;
       margin: 10px 10px 10px 10px;
