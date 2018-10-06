@@ -131,17 +131,19 @@ $(document).ready(function () {
 
         $("#info").html("<p>You attacked " + currentEnemy.name + " for " + yourChar.attackPower + " damage.</p><p>" + currentEnemy.name + " attacked you back for " + currentEnemy.counter + " damage.</p>")
         currentEnemy.health = currentEnemy.health - yourChar.attackPower
+
+        if (currentEnemy.health <= 0) {
+            $("#info").html("<p>You have defeated " + currentEnemy.name + ", you can choose to fight another enemy.</p>")
+            $("#defender").empty()
+            return;
+        }
+
         yourChar.attack()
         yourChar.health = yourChar.health - currentEnemy.counter
         $(".fighterHP", $("#yourCharacter")[0].firstChild).text(yourChar.health)
         $(".fighterHP", $("#defender")[0].firstChild).text(currentEnemy.health)
 
     
-        if (currentEnemy.health <= 0) {
-            $("#info").html("<p>You have defeated " + currentEnemy.name + ", you can choose to fight another enemy.</p>")
-            $("#defender").empty()
-        }
-
         if ($("#enemyRoster")[0].childElementCount === 0 && $("#defender")[0].childElementCount === 0) {
             $("#info").html("<p>You won!!!! GAME OVER!!!</p>")
             $("#restartButton").css('visibility', 'visible')
