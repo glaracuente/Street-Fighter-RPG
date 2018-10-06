@@ -2,7 +2,6 @@ $(document).ready(function () {
     var introSound = new Audio('assets/introSound.mp3');
     console.log(introSound)
     var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
-    var backs = ["back1", "back2", "back1", "back2"];
     var fighterHPs = [300, 350, 275, 325];
     var fighterAttacks = [30, 20, 15, 10];
     var fighterCounters = [25, 30, 45, 20];
@@ -32,7 +31,7 @@ $(document).ready(function () {
             };
 
             fighter.name = fighterNames[i];
-            fighter.back = backs[i];
+            fighter.back = "assets/images/back_" + fighterNames[i].toLowerCase() + ".png";
             fighter.pic = "assets/images/" + fighterNames[i].toLowerCase() + ".png";
             fighter.health = fighterHPs[i];
             fighter.attackPower = fighterAttacks[i];
@@ -86,10 +85,11 @@ $(document).ready(function () {
             $($($("#yourCharacter")[0].firstChild).find(".fighterName")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
             $($($("#yourCharacter")[0].firstChild).find(".fighterHP")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
             yourChar = jQuery.data($("#yourCharacter")[0].firstChild, "fighter")
-            //$("#fightRing").css('background-image', "url(assets/images/ready.png)")
+            $("#fightRing").css('background-image', "url(" + yourChar.back + ")")
             $("#fightRing").css('visibility', 'visible')
             $("#bottom").css('visibility', 'visible')
             $("#enemyRoster").append($("#pregame").children().detach())
+            $("#pregame").text("")
         }
         //move enemy to defense area...only if clicking on a fighter in enemy roster, and there is no current defender
         else if ($("#enemyRoster").has($(this)).length && $("#defender")[0].childElementCount === 0) { //WHY DO I NEED LENGTH FOR THIS TO WORK PROPERLY?
@@ -97,7 +97,6 @@ $(document).ready(function () {
             if ($("#enemyRoster")[0].childElementCount === 3) {
                 $("#attackButton").css('visibility', 'visible')
             }
-            $("#fightRing").css('background-image', "url(assets/images/" + yourChar.back + ".gif)")
             $("#defender").append($(this))
             $($($("#defender")[0].firstChild).find(".fighterName")).css({ "background-color": "red", "color": "black" })
             $($($("#defender")[0].firstChild).find(".fighterHP")).css({ "background-color": "red", "color": "black" })
