@@ -139,7 +139,6 @@ $(document).ready(function () {
     
         if (currentEnemy.health <= 0) {
             $("#info").html("<p>You have defeated " + currentEnemy.name + ", you can choose to fight another enemy.</p>")
-            youwin.play()
             $("#defender").empty()
         }
 
@@ -151,7 +150,6 @@ $(document).ready(function () {
         }
 
         if (yourChar.health <= 0) {
-            youlose.play()
             $("#info").html("<p>You have been defeated...GAME OVER!!!</p>")
             $("#restartButton").css('visibility', 'visible')
         }
