@@ -168,13 +168,13 @@ $(document).ready(function () {
 
 
     $("#restartButton").on("click", function () {
-        console.log($("#pregame")[0].childElementCount);
-        console.log($("#pregame"));
-        initCharObjects();
-        initHTML();
-        console.log($("#pregame")[0].childElementCount);
-        console.log($("#pregame"));
-        // location.reload(); //HACK!!!!!
+        //console.log($("#pregame")[0].childElementCount);
+        //console.log($("#pregame"));
+        //initCharObjects();
+        //initHTML();
+        //console.log($("#pregame")[0].childElementCount);
+        //console.log($("#pregame"));
+        location.reload(); //HACK!!!!!
     });
 
 });
@@ -182,7 +182,6 @@ $(document).ready(function () {
     //RESTART HACK FIX
     // NEED TO MAKE VARIABLE NAMES BETTER
     // FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
-    // make mobile responsive
 
 
 
