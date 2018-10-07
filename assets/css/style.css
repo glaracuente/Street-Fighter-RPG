@@ -34,29 +34,6 @@
   body {
     font-family: 'Press Start 2P', cursive;
   }
-
-  
-  /* The animation code 
-  @keyframes name-change {
-    from {
-      background-color: #eee;
-      color:#4aaaa5;
-    }
-    to {
-      background-color: #4aaaa5;
-      color:#eee;
-    }
-  }
-  
-  h1 {
-    padding: 20px;
-    color:rgb(162, 18, 18);
-    font-family: 'Georgia', Times, 'Times New Roman', serif;
-    font-weight: bold;
-    /*animation-name: name-change;
-    animation-duration: 5s;
-    float: right;
-  }**/
   
   
 
@@ -131,11 +108,11 @@
     z-index: 500;
   }
 
-  #yourCharDiv {
+  #yourCharacter {
     float: left;
   }
 
-  #defenderDiv {
+  #defender {
     float: right;
   }
   
@@ -160,7 +137,6 @@
     .fighterBox {
       width: 100px;
       height: 100px;
-      margin: 10px 10px 10px 10px;
       text-align: center;
       background-color: black;
       position: relative;
