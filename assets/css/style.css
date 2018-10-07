@@ -135,8 +135,8 @@
 
   @media screen and (max-width: 464px) {
     .fighterBox {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       text-align: center;
       background-color: black;
       position: relative;
