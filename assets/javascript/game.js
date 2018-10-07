@@ -10,13 +10,11 @@ var youwin = new Audio('assets/sounds/youwin.mp3');
 var select = new Audio('assets/sounds/select.mp3');
 
 
-
-
 $(document).ready(function () {
     var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
     var fighterHPs = [300, 350, 275, 325];
     var fighterAttacks = [30, 20, 15, 10];
-    var fighterCounters = [25, 40, 45, 20];
+    var fighterCounters = [25, 400, 45, 20];
     var fighterObjects = [];
     var yourChar;
     var currentEnemy;
@@ -56,6 +54,8 @@ $(document).ready(function () {
     var initHTML = function () {
         console.log("inithtml")
         for (var i = 0; i < fighterObjects.length; i++) {
+            var pretext = $("#pregametext")
+            pretext.html("<h6>CHOOSE YOUR CHARACTER:</h6>")
             var fighterDisplay = $("<section>")
             fighterDisplay.addClass("fighterBox")
             var fighterName = $("<div>")
@@ -89,10 +89,17 @@ $(document).ready(function () {
     initCharObjects();
     initHTML();
 
+
+
+    $(".fighterImg").on("click", function () {
+        console.log("clicking fighter img")
+    })
+
+
     $(".fighterBox").on("click", function () {
-        console.log("clicking fighter box") //why doesn't work after reset?????
+        console.log("clicking fighter box")
         if ($("#pregame")[0].childElementCount === 4) {
-            $("#pregametext").empty();
+            $("#pregametext").empty()
             introSound.play()
             $("#yourCharacter").append($(this))
             $($($("#yourCharacter")[0].firstChild).find(".fighterName")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
@@ -118,6 +125,7 @@ $(document).ready(function () {
             eval(currentEnemy.name.toLowerCase()).play()
         }
     });
+
 
 
     $("#attackButton").on("click", function () {
@@ -151,24 +159,30 @@ $(document).ready(function () {
 
         if (yourChar.health <= 0) {
             $("#info").html("<p>You have been defeated...GAME OVER!!!</p>")
+            $("#yourCharacter").empty()
             $("#restartButton").css('visibility', 'visible')
+            $("#attackButton").css('visibility', 'hidden')
             return;
         }
     });
 
 
     $("#restartButton").on("click", function () {
+        console.log($("#pregame")[0].childElementCount);
+        console.log($("#pregame"));
         initCharObjects();
         initHTML();
-       // location.reload(); //HACK!!!!!
+        console.log($("#pregame")[0].childElementCount);
+        console.log($("#pregame"));
+        // location.reload(); //HACK!!!!!
     });
 
 });
 
-
-        //NEED TO MAKE VARIABLE NAMES BETTER
-        //FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
-        //make mobile responsive
+    //RESTART HACK FIX
+    // NEED TO MAKE VARIABLE NAMES BETTER
+    // FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
+    // make mobile responsive
 
 
 
