@@ -16,7 +16,7 @@ $(document).ready(function () {
     var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
     var fighterHPs = [300, 350, 275, 325];
     var fighterAttacks = [30, 20, 15, 10];
-    var fighterCounters = [25, 30, 45, 20];
+    var fighterCounters = [25, 40, 45, 20];
     var fighterObjects = [];
     var yourChar;
     var currentEnemy;
@@ -105,7 +105,7 @@ $(document).ready(function () {
         }
         //move enemy to defense area...only if clicking on a fighter in enemy roster, and there is no current defender
         else if ($("#enemyRoster").has($(this)).length && $("#defender")[0].childElementCount === 0) { //WHY DO I NEED LENGTH FOR THIS TO WORK PROPERLY?
-            //make attach button appear only when the first defender is chosen
+            //make attack button appear only when the first defender is chosen
             if ($("#enemyRoster")[0].childElementCount === 3) {
                 $("#attackButton").css('visibility', 'visible')
             }
@@ -124,26 +124,20 @@ $(document).ready(function () {
         if ($("#defender")[0].childElementCount === 0) {
             select.play()
             $("#info").html("<p>No enemy here.</p>")
-            return
+            return;
         }
 
         fight.play()
 
         $("#info").html("<p>You attacked " + currentEnemy.name + " for " + yourChar.attackPower + " damage.</p><p>" + currentEnemy.name + " attacked you back for " + currentEnemy.counter + " damage.</p>")
         currentEnemy.health = currentEnemy.health - yourChar.attackPower
+        $(".fighterHP", $("#defender")[0].firstChild).text(currentEnemy.health)
 
         if (currentEnemy.health <= 0) {
             $("#info").html("<p>You have defeated " + currentEnemy.name + ", you can choose to fight another enemy.</p>")
             $("#defender").empty()
-            return;
         }
 
-        yourChar.attack()
-        yourChar.health = yourChar.health - currentEnemy.counter
-        $(".fighterHP", $("#yourCharacter")[0].firstChild).text(yourChar.health)
-        $(".fighterHP", $("#defender")[0].firstChild).text(currentEnemy.health)
-
-    
         if ($("#enemyRoster")[0].childElementCount === 0 && $("#defender")[0].childElementCount === 0) {
             $("#info").html("<p>You won!!!! GAME OVER!!!</p>")
             $("#restartButton").css('visibility', 'visible')
@@ -151,20 +145,22 @@ $(document).ready(function () {
             return;
         }
 
+        yourChar.attack()
+        yourChar.health = yourChar.health - currentEnemy.counter
+        $(".fighterHP", $("#yourCharacter")[0].firstChild).text(yourChar.health)
+
         if (yourChar.health <= 0) {
             $("#info").html("<p>You have been defeated...GAME OVER!!!</p>")
             $("#restartButton").css('visibility', 'visible')
+            return;
         }
-
-       
-
     });
 
 
     $("#restartButton").on("click", function () {
-        //initCharObjects();
-        //initHTML();
-        location.reload(); //HACK!!!!!
+        initCharObjects();
+        initHTML();
+       // location.reload(); //HACK!!!!!
     });
 
 });
