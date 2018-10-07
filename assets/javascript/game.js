@@ -14,7 +14,7 @@ $(document).ready(function () {
     var fighterNames = ["Ryu", "Blanka", "Guile", "Dhalsim"];
     var fighterHPs = [300, 350, 275, 325];
     var fighterAttacks = [30, 20, 15, 10];
-    var fighterCounters = [25, 400, 45, 20];
+    var fighterCounters = [25, 40, 45, 20];
     var fighterObjects = [];
     var yourChar;
     var currentEnemy;
