@@ -5,8 +5,6 @@ var guile = new Audio('assets/sounds/sonicboom.mp3');
 var dhalsim = new Audio('assets/sounds/yoga_flame.mp3');
 var fight = new Audio('assets/sounds/fight.mp3');
 var perfect = new Audio('assets/sounds/perfect.mp3');
-var youlose = new Audio('assets/sounds/youlose.mp3');
-var youwin = new Audio('assets/sounds/youwin.mp3');
 var select = new Audio('assets/sounds/select.mp3');
 
 
@@ -19,6 +17,7 @@ $(document).ready(function () {
     var yourChar;
     var currentEnemy;
 
+    //Initialize all fight/character objects ( the result is an array called fighterObjects that holds 4 javascript objects that represent each fight )
     var initCharObjects = function () {
         console.log("initcharobjects")
         fighterObjects = [];
@@ -51,49 +50,47 @@ $(document).ready(function () {
         }
     }
 
+    //Initialize HTML
     var initHTML = function () {
         console.log("inithtml")
+        $("#pregametext").html("<h6>CHOOSE YOUR CHARACTER:</h6>")
+
         for (var i = 0; i < fighterObjects.length; i++) {
-            var pretext = $("#pregametext")
-            pretext.html("<h6>CHOOSE YOUR CHARACTER:</h6>")
-            var fighterDisplay = $("<section>")
-            fighterDisplay.addClass("fighterBox")
-            var fighterName = $("<div>")
-            fighterName.addClass("fighterName")
-            fighterName.text(fighterObjects[i].name)
-            var fighterImg = $("<img>")
-            fighterImg.addClass("fighterImg")
-            fighterImg.attr("src", fighterObjects[i].pic)
-            var fighterHP = $("<div>")
-            fighterHP.addClass("fighterHP")
-            fighterHP.text(fighterObjects[i].health)
-            //$("#win-lose").html("<h2>Winner!</h2>") CAN TRY THIS TOO
+            //Create html for a fighter's name, image, and hp...then append them to a section that will represent them
+            var fighterDisplay = $("<section>").addClass("fighterBox")
+            var fighterName = $("<div>").addClass("fighterName").text(fighterObjects[i].name)
+            var fighterImg = $("<img>").addClass("fighterImg").attr("src", fighterObjects[i].pic) //IS STRINGING FUNCTIONS LIKE THIS BAD PRACTICE?
+            var fighterHP = $("<div>").addClass("fighterHP").text(fighterObjects[i].health)
             fighterDisplay.append(fighterName)
             fighterDisplay.append(fighterImg)
             fighterDisplay.append(fighterHP)
+            //This is what creates the relationship between the fighter's html represenation and their actual javascript object 
             fighterDisplay.data("fighter", fighterObjects[i])
+            // Add all fighters to the pregame area of the window
             $("#pregame").append(fighterDisplay)
         }
 
+        //Hide all html that should only appear after the pregame character selection
         $("#restartButton").css('visibility', 'hidden')
         $("#attackButton").css('visibility', 'hidden')
         $("#fightRing").css('visibility', 'hidden')
         $("#bottom").css('visibility', 'hidden')
 
+        //Empty out all divs that may have leftover children from a previous game
         $("#info").empty()
         $("#yourCharacter").empty()
         $("#enemyRoster").empty()
         $("#defender").empty()
     }
 
-    initCharObjects();
-    initHTML();
+    //Initialize all objects and html for a fresh game 
+    var initGame = function () {
+        initCharObjects()
+        initHTML()
+    }
 
-
-
-    $(".fighterImg").on("click", function () {
-        console.log("clicking fighter img")
-    })
+    //This is where game actually starts on a fresh page load
+    initGame()
 
 
     $(".fighterBox").on("click", function () {
@@ -168,19 +165,14 @@ $(document).ready(function () {
 
 
     $("#restartButton").on("click", function () {
-        //console.log($("#pregame")[0].childElementCount);
-        //console.log($("#pregame"));
-        //initCharObjects();
-        //initHTML();
-        //console.log($("#pregame")[0].childElementCount);
-        //console.log($("#pregame"));
-        location.reload(); //HACK!!!!!
+        initGame()
+        // location.reload(); //HACK!!!!!
     });
+
 
 });
 
     //RESTART HACK FIX
-    // NEED TO MAKE VARIABLE NAMES BETTER
     // FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
 
 

@@ -1,154 +1,119 @@
-/** GENERAL CLASSES **/
+/** GENERAL **/
+
 * {
-    box-sizing: border-box;
-  }
-    
-  .clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-  
- 
-    
-  /** Core Body, Header, Nav, and Footer Code background-image: url(../images/back1.gif);**/
-
-  #fightRing {
-    background-repeat: no-repeat;
-    background-size: 100% 300px;
-    height: 300px;
-    width: 100%;
-    margin-bottom: 10px;
-    visibility: hidden;
-  }
-
-
-  #bottom {
-    height: 300px;
-    margin-bottom: 10px;
-    visibility: hidden;
-  }
-
-
- 
-  body {
-    font-family: 'Press Start 2P', cursive;
-  }
-  
-  
-
-  
-  #attackButton {
-    visibility: hidden;
-    background-color: red;
-    border: solid 1px black;
-    color: white;
-    width: 100px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    position: relative;
-    z-index: 100;
-  }
-
-  #restartButton {
-    visibility: hidden;
-    background-color: rgb(112, 112, 112);
-    border: solid 1px black;
-    color: rgb(0, 0, 0);
-    width: 100px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    position: relative;
-    z-index: 99;
-  }
-
-  
-  /** PORTFOLIO **/
-  
-  .fighterBox {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin: 10px 10px 10px 10px;
-    text-align: center;
-    background-color: black;
-    position: relative;
-    z-index: 1000;
-  }
-  
-  
-  .fighterName {
-    background-color: rgb(0, 0, 0);
-    color: white;
-  }
+  box-sizing: border-box;
+}
 
 /** taken from https://stackoverflow.com/questions/32875695/flip-mirror-an-image-horizontally-vertically-with-css **/
-  .img-hor {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
+.img-hor {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
 }
 
 
-  .fighterHP {
-    background-color: rgb(0, 0, 0);
-    color: white;
+/** FIGHT RING AND BOTTOM OF SCREEN **/
+
+#fightRing {
+  background-repeat: no-repeat;
+  background-size: 100% 300px;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+  visibility: hidden;
+}
+
+#bottom {
+  height: 300px;
+  margin-bottom: 10px;
+  visibility: hidden;
+}
+
+
+
+
+
+
+
+/** BUTTONS **/
+
+#attackButton {
+  visibility: hidden;
+  background-color: red;
+  border: solid 1px black;
+  color: white;
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  position: relative;
+  z-index: 100;
+}
+
+#restartButton {
+  visibility: hidden;
+  background-color: rgb(112, 112, 112);
+  border: solid 1px black;
+  color: rgb(0, 0, 0);
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  position: relative;
+  z-index: 99;
+}
+
+
+
+
+
+
+/** FIGHTER BOXES **/
+
+.fighterBox {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+  background-color: black;
+  position: relative;
+  z-index: 1000;
+}
+
+.fighterHP {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.fighterImg {
+  width: 80%;
+  height: 70%;
+}
+
+.fighterName {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+
+
+@media screen and (max-width: 464px) {
+  body {
+    font-size: 12px;
   }
 
-  #pregame {
-    display: inline-block;
-    position: relative;
-    z-index: 500;
+  .fighterBox {
+    width: 140px;
+    height: 140px;    
   }
-
-  #yourCharacter {
-    float: left;
-  }
-
-  #defender {
-    float: right;
-  }
-  
-  #enemiesDiv {
-    clear: both;
-  }
-
-
-  .fighterImg {
-    width: 80%;
-    height: 70%;
-  }
-  
- 
- #pregame {
-   width: 440px;
- }
-
-
-
-  @media screen and (max-width: 464px) {
-    .fighterBox {
-      width: 140px;
-      height: 140px;
-      text-align: center;
-      background-color: black;
-      position: relative;
-      z-index: 1000;
-    }
-
-    body {
-      font-size: 12px;
-    }
-
-   }
-  
-
-
-  
+}
