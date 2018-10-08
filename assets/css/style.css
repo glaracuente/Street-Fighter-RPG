@@ -85,8 +85,6 @@ body {
   margin: 10px 10px 10px 10px;
   text-align: center;
   background-color: black;
-  position: relative;
-  z-index: 1000;
 }
 
 .fighterHP {

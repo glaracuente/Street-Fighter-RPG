@@ -182,12 +182,11 @@ $(document).ready(function () {
 
 
     $("#restartButton").on("click", function () {
-        initGame()
-        // location.reload(); //HACK!!!!!
+        //initGame() This works for reseting the look of the page, but for some reason, it won't register click events on my fighterBox div anymore
+        location.reload(); //This works, but to me it's a HACK....need to figure out why the initGame() did't work.
     });
 });
 
-    //RESTART HACK FIX
 
 
 
