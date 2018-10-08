@@ -31,7 +31,7 @@ $(document).ready(function () {
                 attackPower: 0,
                 baseAttackPower: 0,
                 counter: 0,
-                attack: function () {
+                powerUp: function () {
                     this.attackPower = this.attackPower + this.baseAttackPower;
                 },
                 setBaseAttackPower: function () {
@@ -93,19 +93,27 @@ $(document).ready(function () {
     initGame()
 
 
+
     $(".fighterBox").on("click", function () {
         console.log("clicking fighter box")
+        //Make first fighter that you click your chosen character for rest of the game, and move them into the yourCharacter div
         if ($("#pregame")[0].childElementCount === 4) {
             $("#pregametext").empty()
             introSound.play()
             $("#yourCharacter").append($(this))
+
+            //Change character's name and hp divs to have background color blue, with white text
             $($($("#yourCharacter")[0].firstChild).find(".fighterName")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
             $($($("#yourCharacter")[0].firstChild).find(".fighterHP")).css({ "background-color": "rgb(37, 3, 128)", "color": "white" })
+
+            //Extract character's object from the associated html that represents the character
             yourChar = jQuery.data($("#yourCharacter")[0].firstChild, "fighter")
             $("#fightRing").css('background-image', "url(" + yourChar.back + ")")
             $("#fightRing").css('visibility', 'visible')
             $("#bottom").css('visibility', 'visible')
             $("#enemyRoster").append($("#pregame").children().detach())
+            //Change characters in the enemy roster div to have a black background and white text 
+            $($("#enemyRoster")[0].children).css({ "background-color": "black", "color": "white" })
         }
         //move enemy to defense area...only if clicking on a fighter in enemy roster, and there is no current defender
         else if ($("#enemyRoster").has($(this)).length && $("#defender")[0].childElementCount === 0) { //WHY DO I NEED LENGTH FOR THIS TO WORK PROPERLY?
@@ -113,53 +121,62 @@ $(document).ready(function () {
             if ($("#enemyRoster")[0].childElementCount === 3) {
                 $("#attackButton").css('visibility', 'visible')
             }
+
             $("#defender").append($(this))
+            //Change character's name and hp divs to have background color red, with white text
             $($($("#defender")[0].firstChild).find(".fighterName")).css({ "background-color": "red", "color": "black" })
             $($($("#defender")[0].firstChild).find(".fighterHP")).css({ "background-color": "red", "color": "black" })
+            //Flip picture of character to face in correct direction
             $($($("#defender")[0].firstChild).find(".fighterImg")).addClass("img-hor")
-            $($("#enemyRoster")[0].children).css({ "background-color": "black", "color": "white" })
+            //Extract  object from the associated html that represents the character
             currentEnemy = jQuery.data($("#defender")[0].firstChild, "fighter")
             eval(currentEnemy.name.toLowerCase()).play()
         }
     });
 
 
-
     $("#attackButton").on("click", function () {
+        //Code for pressing attack button, with no proper defender in place
         if ($("#defender")[0].childElementCount === 0) {
             select.play()
             $("#info").html("<p>No enemy here.</p>")
-            return;
+            return
         }
 
         fight.play()
 
+        //you attack the defender
         $("#info").html("<p>You attacked " + currentEnemy.name + " for " + yourChar.attackPower + " damage.</p><p>" + currentEnemy.name + " attacked you back for " + currentEnemy.counter + " damage.</p>")
         currentEnemy.health = currentEnemy.health - yourChar.attackPower
         $(".fighterHP", $("#defender")[0].firstChild).text(currentEnemy.health)
 
+        //if they run out of health...
         if (currentEnemy.health <= 0) {
             $("#info").html("<p>You have defeated " + currentEnemy.name + ", you can choose to fight another enemy.</p>")
             $("#defender").empty()
         }
 
+        //if you've defeated all enemies
         if ($("#enemyRoster")[0].childElementCount === 0 && $("#defender")[0].childElementCount === 0) {
             $("#info").html("<p>You won!!!! GAME OVER!!!</p>")
             $("#restartButton").css('visibility', 'visible')
             $("#attackButton").css('visibility', 'hidden')
-            return;
+            return
         }
 
-        yourChar.attack()
+        yourChar.powerUp() //increase attack power by base attack power
+
+        //defender counter attacks        
         yourChar.health = yourChar.health - currentEnemy.counter
         $(".fighterHP", $("#yourCharacter")[0].firstChild).text(yourChar.health)
 
+        //If you run out of health...
         if (yourChar.health <= 0) {
             $("#info").html("<p>You have been defeated...GAME OVER!!!</p>")
             $("#yourCharacter").empty()
             $("#restartButton").css('visibility', 'visible')
             $("#attackButton").css('visibility', 'hidden')
-            return;
+            return
         }
     });
 
@@ -168,12 +185,9 @@ $(document).ready(function () {
         initGame()
         // location.reload(); //HACK!!!!!
     });
-
-
 });
 
     //RESTART HACK FIX
-    // FUNCTIONS AND VARIABLES TO MAKE CODE MORE READABLE/EFFICIENT
 
 
 
